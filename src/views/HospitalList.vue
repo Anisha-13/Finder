@@ -1,5 +1,7 @@
+
+  
 <template>
-    <div>
+    <div id="deatils">
         <AppHeader @trigger-search="startSearch"/>
         <h2 id="heading"> List Of Hospitals</h2>
        <div class="loader" v-if="isLoading"></div>
@@ -24,14 +26,11 @@
 <script>
 import HospitalCard from '../components/HospitalCard.vue'
 import AppHeader from '../components/AppHeader.vue'
-
 export default {
-
     components: {
         HospitalCard,
         AppHeader
     },
-
     data() {
         return {
             hospitalList: [],
@@ -45,7 +44,6 @@ export default {
             endpoint4:[],
         }
     },
-
     methods: {
         fetchData() {
             this.isLoading = true
@@ -56,7 +54,6 @@ export default {
                 this.isLoading = false
             })
         },
-
         async startSearch(searchq) {
             console.log(searchq)
             // var endpoint2 = []
@@ -70,47 +67,34 @@ export default {
                 this.fetchData()
                 return
             }
-
             const res = await fetch(this.api + "/data/" + searchq + '/')
             const new_res = await res.json()
             this.endpoint1 = await new_res
-
             // endpoint3 for city
             const res2 = await fetch(this.api + "/data/")
             const new_res2 = await res2.json()
             this.endpoint3 = await new_res2.filter((v) => v.city == searchq)
-
-            
-
+             this.endpoint2 = await new_res2.filter((v) => v.name == searchq)
             console.log(this.endpoint1)
-
             try {
                 parseInt(searchq)
             // endpoint 4
             this.endpoint4 = await new_res2.filter((v) => v.pincode == parseInt(searchq))
             
-
             } catch(e) {
                 console.log("Not a number")
             }
             // Name
-            const res1 = await fetch(this.api + "/search/" + searchq + '/')
-            const new_res1 = await res1.json()
-            this.endpoint2 = await new_res1
-
+            // const res1 = await fetch(this.api + "/search/" + searchq + '/')
+            // const new_res1 = await res1.json()
+            // this.endpoint2 = await new_res1
             const conc1 = await this.endpoint1.concat(this.endpoint2);
             const conc2 = await conc1.concat(this.endpoint3)
             this.hospitalList = await conc2.concat(this.endpoint4)
-
             // endpoint 3 for city
-
-
-
-
             this.searchq = ""
             this.isLoading = false
         },
-
         navigateDetails(id) {
             console.log(id)
             // find the corresponding element with given id
@@ -131,15 +115,12 @@ export default {
                 image: myobj.image,
             }});
         },
-
         navigateMap(lat, long) {
             console.log(lat.split(" ")[0])
             let nlat = Number(lat.split(" ")[0])
             let nlong = Number(long.split(" ")[0]) 
             console.log(long.split(" ")[0])
-
             this.getLocation()
-
             this.$router.push({name: 'Azuremaps', params:{
                 plat: nlat,
                 plong: nlong,
@@ -147,7 +128,6 @@ export default {
                 long: this.long,
             }})
         },
-
         getLocation() {
             if (navigator.geolocation) {
                     navigator.geolocation.watchPosition(this.showPosition);
@@ -155,48 +135,43 @@ export default {
                 console.log("Geolocation is not supported by this browser.")
              }
         },
-
         showPosition(position) {
             this.lat = position.coords.latitude 
             this.long = position.coords.longitude
         }
     },
-
     created() {
         this.getLocation();
         this.fetchData()
     }
-
 }
-
 </script>
 
 <style scoped>
-
+#details{
+    width:80%;
+    margin-left: 2em;
+}
 #heading{
-    margin: 1rem auto;
-    justify-content: center;
-    align-items: center;
+    margin-top:0rem ;
+   
     font-family:monospace;
     font-weight:bold;
-    font-size:2.5rem;
+    font-size:2rem;
     text-align: center;
-    background-image: linear-gradient(to left, #BFFFFB, #80FFF7);
     width: 58%;
-    padding: 1rem;
-    color: #00847b;
-    border-radius: 6px;
+    
+    /* padding: 1rem; */
+    color: rgba(0,0,0,0.5);
 }
-
 .loader {
-  border: 16px solid #f3f3f3;
+  border: 10px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
+  border-top: 10px solid #3498db;
+  width: 50px;
+  height: 50px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
-
    margin: 0;
   position: absolute;
   top: 50%;
@@ -204,16 +179,14 @@ export default {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-
 /* Safari */
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
 }
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
 </style>
+

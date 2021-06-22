@@ -1,9 +1,14 @@
 <template>
 <div>
- 
+  <div>
+    <route-link to="/Slider">Slider</route-link>
+  </div>
+
   <FinderLogo />
+ 
 
   <router-view />
+  
 
 </div>
 </template>
@@ -12,9 +17,11 @@
 
 import FinderLogo from './views/FinderLogo.vue'
 
+
 export default {
   components: {
-    FinderLogo
+    FinderLogo,
+    
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="header">
     <header>
         <div class="header">
 
@@ -54,19 +54,36 @@ export default {
 *{
     padding: 0;
     margin: 0;
+   
 }
 
 .header {
-    overflow: hidden;
     background-color:#343A40;
-    padding: 5px 10px;
+    /* padding: 5px 10px; */
     max-height: 3rem;
     display: flex;
+    width:100%;
+    
+  }
+  #header{
+    position:sticky;
+    top:0;
+    margin:0px ;
+    padding:0px;
+    width: 100%;
+    overflow-x: hidden;
+    z-index: 10;
+  }
+  header{
+    margin:0px;
+    padding:0px;
+    width:100%;
   }
 
   #logo{
-    height: 55px;
-    width: 60px;
+    padding-top:0.3em ;
+    height: 2em;
+    width: 50px;
   }
   
   /* Style the header links */
@@ -74,39 +91,39 @@ export default {
     float: left;
     color: white;
     text-align: center;
-    padding: 12px;
+    padding: 0.8em;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    line-height: 25px;
+    font-size:0.7em;
+    line-height: 1.7em;
    
   }
   .logo .Logo-text{
     font-family: 'Philosopher', sans-serif;
     font-weight:lighter;
-    font-size: xx-large;
+    font-size: x-large;
     
     
   }
   .img{
-    width: 2em;
+    width: 1.8em;
   }
   .find{
     background-color: #343a4077;
-    background: 343a4077;
     border: none;
     cursor: pointer;
     margin-right: 8vw;
-    margin-left: 20px;
+    margin-left: 2%;
   }
   #search{
   background-color:#303335;
   color: white;
-  padding: 3% 10px 3% 10px;
-  min-width: 400px;
+  padding: 3% 5% 3% 5%;
+  overflow-x: visible;
+  width:19em;
   border: none;
   outline: none;
-  font-size: 20px;
+  font-size: 0.8em;
   }
 
   #search:focus{
@@ -115,10 +132,11 @@ export default {
   }
   .search{
     position: relative;
-    top: -3.6rem;
+    top: -2.0rem;
     float: right;
     display: flex;
     flex-direction: row;
+   
     align-items: center;
   }
   

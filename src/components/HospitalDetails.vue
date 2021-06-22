@@ -4,7 +4,8 @@
 
   <AppHeader @trigger-search="notAllowed"/>
 
-  <div class="Top-part" :style="{ 'background-image': 'url(' + image + ')' }">
+  <div  class="Top-part"   
+   > 
     <h1>Hospitals Are About Healing</h1>
     <h6>-IRWIN RENDLER</h6>
   </div>
@@ -16,11 +17,11 @@
       <div class="feild" id="text">Ratings : 
         <span v-for="x in rating" :key="x">  &#11088; </span>
       </div>
-      <div class="feild" id="text">Type : {{type}}</div>
+      <div class="feild" id="text">Type : <span id="type"> {{type}}</span></div>
       <div class="feild">
         <h3><i>Location : {{city}}, {{state}}, {{parseInt(pincode)}}</i></h3>
       </div>
-      <div class="feild">
+      <div class="feild feild1">
           <a :href="link" target="blank" @click="debug"> &#128279; click to visit hospital's webpage...</a>
       </div>
     </div>
@@ -155,6 +156,10 @@ export default {
   font-family:monospace;
 }
 
+#type{
+  color:#F05454;
+  font-weight: 900;
+}
 a {
     font-size: 1rem;
     font-family: monospace;
@@ -163,10 +168,18 @@ a {
 }
 
 h1, h6 {
-    font-family: monospace;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+    color:#171717;
+}
+h2{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.3em;
+  color:#900C3F;
 }
 
 h4 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.3rem;
     margin-bottom: 0.3rem;
 }
@@ -175,28 +188,30 @@ li{
   margin-left: 5%;
   padding-left: 1%;
   text-align: left;
-  color: white;
+  color: black;
 }
 .Top-part {
   margin-right: auto;
   margin-left: auto;
+  position:relative;
+  top:-2.2em;
   height: 40vh;
-  width: 99vw;
+  width: 97.5vw;
   background-size: cover;
   background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 10px;
+   background-image:
+  url('https://images.pexels.com/photos/532568/pexels-photo-532568.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
+ 
 }
 
 h1, h6 {
   font-family: 'Raleway', sans-serif;
   line-height: 2.5rem;
-  color:black;
+  
 }
 .Container{
   display: flex;
@@ -205,36 +220,44 @@ h1, h6 {
 }
 .Main-part{
   width:50%;
-  margin-top: 3%;
-  margin-left:2.4%;
-  background-color:#F8EDED;
+  margin-top: 0%;
+  margin-left:2%;
+  background-color:rgba(238, 238, 238,0.5);
   overflow-wrap: break-word;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 8px;
-  background-image: linear-gradient(to left, dodgerblue, blueviolet);
+  /* border-radius: 8px; */
+  /* background-image: linear-gradient(to left, dodgerblue, blueviolet); */
   color: black;
 }
 .feild{
-  padding-top: 3%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding-top: 2%;
   padding-left:2%;
-  font-size: 130%;
+  font-size: 100%;
   text-align: left;
-  color: white;
+  
+ 
+}
+.feild1{
+  padding-top: 4em;
+  word-break: keep-all;
+ 
  
 }
 #text{
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 .Details-part{
   padding-top:1%;
   padding-left: 1%;
   margin-left: 2%;
   width: 50%;
-  margin-top: 3%;
+  margin-top: 0%;
   margin-right: 2%;
+  background-color:#F8EDED;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 8px;
-  background-image: linear-gradient(to right, blueviolet, dodgerblue);
+  /* border-radius: 8px; */
+  /* background-image: linear-gradient(to right, blueviolet, dodgerblue); */
 }
 #details, #treatment, #disease {
   color:red;

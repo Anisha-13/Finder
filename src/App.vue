@@ -1,9 +1,5 @@
 <template>
 <div>
-  <div>
-    <route-link to="/Slider">Slider</route-link>
-  </div>
-
   <FinderLogo />
  
 

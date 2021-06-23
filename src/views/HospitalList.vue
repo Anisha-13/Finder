@@ -4,6 +4,7 @@
     <div id="deatils">
         <AppHeader @trigger-search="startSearch"/>
         <h2 id="heading"> List Of Hospitals</h2>
+         <CovidUpdate /> 
        <div class="loader" v-if="isLoading"></div>
         <HospitalCard v-for="item in hospitalList" :key="item.id" 
         :id="item.id"
@@ -26,10 +27,12 @@
 <script>
 import HospitalCard from '../components/HospitalCard.vue'
 import AppHeader from '../components/AppHeader.vue'
+import CovidUpdate from '../components/CovidUpdate.vue'
 export default {
     components: {
         HospitalCard,
-        AppHeader
+        AppHeader,
+        CovidUpdate
     },
     data() {
         return {

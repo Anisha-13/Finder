@@ -4,7 +4,7 @@ import AzureMap from '../views/AzureMap.vue'
 import HospitalDetails from '../components/HospitalDetails.vue'
 import Government from '../views/Government.vue'
 import PrivateHospital from '../views/PrivateHospital.vue'
-import Slider from '../components/slider.vue'
+
   
 
 
@@ -20,10 +20,7 @@ const routes = [
     component: AzureMap,
     props: true,
   },
-  {
-    path:'/Slider',
-    component:Slider,
-  },
+
 
   {
     path: '/government',

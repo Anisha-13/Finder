@@ -24,6 +24,9 @@
       <div class="feild feild1">
           <a :href="link" target="blank" @click="debug"> &#128279; click to visit hospital's webpage...</a>
       </div>
+        <div class="feild">
+          <p id="loc" @click="navigateLoc">  &#128279;  Click here to see location in map </p>
+      </div>
     </div>
     <div class="Details-part">
       <span id="details">
@@ -78,7 +81,11 @@ export default {
         treatment: [],
         link: "",
         image: "",
-        l1: "http://www.google.com"
+        l1: "http://www.google.com",
+        nlat: "",
+        nlong: "",
+        lat: 0,
+        long: 0,
       }
     },
 
@@ -89,7 +96,31 @@ export default {
 
       notAllowed() {
         alert("This method not allowed here.")
-      }
+    },
+     navigateLoc() {
+           console.log(this.nlat.split(" ")[0])
+            let nlat1 = Number(this.nlat.split(" ")[0])
+            let nlong1 = Number(this.nlong.split(" ")[0]) 
+            console.log(this.nlong.split(" ")[0])
+            this.getLocation()
+            this.$router.push({name: 'Azuremaps', params:{
+                plat: nlat1,
+                plong: nlong1,
+                lat: this.lat,
+                long: this.long,
+            }})
+      },
+      getLocation() {
+            if (navigator.geolocation) {
+                    navigator.geolocation.watchPosition(this.showPosition);
+            } else { 
+                console.log("Geolocation is not supported by this browser.")
+             }
+        },
+        showPosition(position) {
+            this.lat = position.coords.latitude 
+            this.long = position.coords.longitude
+        }
     },
 
     created() {
@@ -128,6 +159,10 @@ export default {
       }
       this.disease = newArr
 
+         this.nlat = this.$route.params.nlat
+      this.nlong = this.$route.params.nlong
+      this.getLocation()
+
       console.log(this.name)
       console.log(this.rating)
       console.log(this.type)
@@ -142,6 +177,8 @@ export default {
       console.log(this.treatment)
       console.log(this.link)
       console.log(this.$route.params.image)
+      console.log(this.nlat)
+      console.log(this.nlong)
     }
 }  
 </script>
@@ -164,7 +201,14 @@ a {
     font-size: 1rem;
     font-family: monospace;
     text-decoration: none;
+     
 
+}
+#loc {
+   font-size: 1rem;
+    font-family: monospace;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 h1, h6 {

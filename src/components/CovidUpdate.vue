@@ -109,8 +109,8 @@ export default {
     font-size: 1em;
     width:40%;
     height:fit-content;
-    /* background-image: linear-gradient(to left,#325288,#09015F); */
-    background-color: #7D5A50;
+    background-image: linear-gradient(to left,#206A5D,#007965);
+    /* background-color: #00AF91; */
    color:white;
     padding: 1rem;
     border-radius: 8px;

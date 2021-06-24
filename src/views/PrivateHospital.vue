@@ -112,6 +112,8 @@ export default {
                 treatment: myobj.treatments,
                 link: myobj.link,
                 image: myobj.image,
+                 nlat: myobj.latitude,
+                nlong: myobj.longitude,
             }});
         },
         navigateMap(lat, long) {

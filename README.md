@@ -1,9 +1,9 @@
 ![hospitalfinder](./src/assets/logo.png) 
 
 # Hospital Finder 
-
-
-
+```
+A website application that will bridge the gap between the people and the healthcare system. 
+```
 ## Project setup
 ```
 npm install

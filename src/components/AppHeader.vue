@@ -13,7 +13,7 @@
         </div>
         <div class="search">
             <div class="field1">
-                <input type="text" name="search" id="search" placeholder="Hospital/Pharmacy" v-model="searchText">
+                <input type="text" v-on:keyup.enter="search" name="search" id="search" placeholder="Hospital/Pharmacy" v-model="searchText">
             </div>
             <div class="field2">
                 <button type="submit" class="find" @click="search">
